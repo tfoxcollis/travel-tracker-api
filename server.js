@@ -26,7 +26,7 @@ const isValidDate = dateString => {
 }
 
 app.get('/api/v1/travelers', (req, res) => {
-  const origin = (req.headers.origin == 'http://localhost:3000') ? 'http://localhost:3000' : 'https://travel-with-trish.vercel.app/'
+  const origin = (req.headers.origin == 'http://localhost:3000') ? 'http://localhost:3000' : 'https://travel-with-trish.vercel.app'
 	res.setHeader('Access-Control-Allow-Origin', origin)
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
