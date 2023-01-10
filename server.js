@@ -16,9 +16,7 @@ app.locals = {
 const corsOptions = {
   origin: "*",
   methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-  allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Origin',
-  credentials: true,
-  preflightContinue: true
+  allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
 };
 app.use(cors(corsOptions));
 app.use(express.json());
