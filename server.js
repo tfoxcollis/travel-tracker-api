@@ -14,11 +14,11 @@ app.locals = {
 }
 
 const corsOptions = {
-  origin: "https://travel-with-trish.vercel.app",
+  origin: "*",
   methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
   allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
   credentials: true,
-  preflightContinue: false
+  preflightContinue: true
 };
 app.use(cors(corsOptions));
 app.use(express.json());
