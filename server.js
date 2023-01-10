@@ -15,9 +15,12 @@ app.locals = {
 
 const corsOptions = {
   origin: "https://travel-with-trish.vercel.app",
-  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
+  methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+  allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+  credentials: true,
+  preflightContinue: false
 };
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const isValidDate = dateString => {
@@ -26,11 +29,10 @@ const isValidDate = dateString => {
 }
 
 app.get('/api/v1/travelers', (req, res) => {
-  const origin = (req.headers.origin == 'http://localhost:3000') ? 'http://localhost:3000' : 'https://travel-with-trish.vercel.app'
-	res.setHeader('Access-Control-Allow-Origin', origin)
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-	res.setHeader('Access-Control-Allow-Credentials', true)
+	// res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
+	// res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+	// res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version')
+	// res.setHeader('Access-Control-Allow-Credentials', true)
   const { travelers } = app.locals;
   res.status(200).json({ travelers });
 });
