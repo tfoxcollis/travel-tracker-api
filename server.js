@@ -26,11 +26,13 @@ const isValidDate = dateString => {
 }
 
 app.get('/api/v1/travelers', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const { travelers } = app.locals;
   res.status(200).json({ travelers });
 });
 
 app.get('/api/v1/travelers/:id', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const { id } = req.params;
   const { travelers } = app.locals;
 
@@ -46,16 +48,19 @@ app.get('/api/v1/travelers/:id', (req, res) => {
 });
 
 app.get('/api/v1/trips', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const { trips } = app.locals;
   res.status(200).json({ trips });
 });
 
 app.get('/api/v1/destinations', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const { destinations } = app.locals;
   res.status(200).json({ destinations });
 });
 
 app.post('/api/v1/trips', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const {
     id,
     userID,
@@ -113,6 +118,7 @@ app.post('/api/v1/trips', (req, res) => {
 });
 
 app.post('/api/v1/destinations', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const {
     id,
     destination,
@@ -153,6 +159,7 @@ app.post('/api/v1/destinations', (req, res) => {
 });
 
 app.post('/api/v1/updateTrip', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   const { id, status, suggestedActivities } = req.body;
 
   if (!id) {
@@ -184,6 +191,7 @@ app.post('/api/v1/updateTrip', (req, res) => {
 });
 
 app.delete('/api/v1/trips/:id', (req, res) => {
+  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
   let { id } = req.params;
   const { trips } = app.locals;
 
