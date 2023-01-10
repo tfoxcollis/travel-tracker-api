@@ -26,7 +26,11 @@ const isValidDate = dateString => {
 }
 
 app.get('/api/v1/travelers', (req, res) => {
-  if(req.method === 'OPTIONS') { return res.status(200).json(({ body: "OK" })) }
+  const origin = (req.headers.origin == 'http://localhost:3000') ? 'http://localhost:3000' : 'https://travel-with-trish.vercel.app/'
+	res.setHeader('Access-Control-Allow-Origin', origin)
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
+	res.setHeader('Access-Control-Allow-Credentials', true)
   const { travelers } = app.locals;
   res.status(200).json({ travelers });
 });
