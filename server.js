@@ -13,7 +13,11 @@ app.locals = {
   destinations
 }
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://travel-with-trish.vercel.app",
+  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const isValidDate = dateString => {
